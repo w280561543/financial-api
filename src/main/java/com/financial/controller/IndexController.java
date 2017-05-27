@@ -1,4 +1,4 @@
-package com.financial.home;
+package com.financial.controller;
 
 import java.util.Map;
 import java.util.HashMap;
