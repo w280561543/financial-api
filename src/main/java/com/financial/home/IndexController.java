@@ -17,5 +17,4 @@ public class IndexController {
 		model.put("message", "Successful!");
 		return model;
 	}
-
 }
