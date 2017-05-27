@@ -1,14 +1,21 @@
 package com.financial.home;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ResponseBody;
+import java.util.Map;
+import java.util.HashMap;
+
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
+@RestController
 public class IndexController {
 	
-	@RequestMapping("/")
-	public @ResponseBody String index() {
-		return "Hello World!";
+	@RequestMapping(value = "/", method=RequestMethod.GET)
+	public Map<String, Object> index() {
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("code", 0);
+		model.put("message", "Successful!");
+		return model;
 	}
+
 }
