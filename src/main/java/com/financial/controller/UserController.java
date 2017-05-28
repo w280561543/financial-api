@@ -14,7 +14,7 @@ public class UserController {
 	@RequestMapping(value = "", method=RequestMethod.GET)
 	public Map<String, Object> index() {
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("code", 0);
+		model.put("code", 200);
 		model.put("message", "Successful!");
 		return model;
 	}
