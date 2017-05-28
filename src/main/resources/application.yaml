@@ -1,0 +1,18 @@
+spring:
+    # DATA REST
+    data:
+        rest:
+            base-path: /api
+
+    # DATASOURCE
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        password: root
+        url: jdbc:mysql://127.0.0.1:3306/financial
+        username: root
+
+    # JPA
+    jpa:
+        hibernate:
+            ddl-auto: create-drop
+        show-sql: true
