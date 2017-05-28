@@ -1,3 +1,17 @@
+# ----------------------------------------
+# CORE YAML
+# ----------------------------------------
+logging:
+    level:
+# DEBUG < INFO < WARN < ERROR < FATAL
+#       root: WARN
+        root: FATAL
+#       org.springframework.security: INFO
+        org.springframework.security: FATAL
+
+# ----------------------------------------
+# SPRING YAML
+# ----------------------------------------
 spring:
     # DATA REST
     data:
@@ -8,7 +22,7 @@ spring:
     datasource:
         driver-class-name: com.mysql.jdbc.Driver
         password: root
-        url: jdbc:mysql://127.0.0.1:3306/financial
+        url: jdbc:mysql://127.0.0.1:3306/financial?characterEncoding=utf8&useSSL=true
         username: root
 
     # JPA
@@ -16,3 +30,16 @@ spring:
         hibernate:
             ddl-auto: create-drop
         show-sql: true
+
+    # HTTP encoding
+    http:
+        encoding:
+            charset: UTF-8
+            enabled: true
+
+# ----------------------------------------
+# WEB YAML
+# ----------------------------------------
+server:
+    # server error.
+    port: 8080
