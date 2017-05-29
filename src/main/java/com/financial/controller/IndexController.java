@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RestController
 public class IndexController {
 	@RequestMapping(value = "/", method=RequestMethod.GET)
-	public Map<String, Object> index() {
+	public Map<String, Object> index() throws Exception {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("code", 200);
 		model.put("message", "Successful!");
