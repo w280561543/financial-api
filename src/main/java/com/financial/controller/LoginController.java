@@ -12,7 +12,7 @@ public class LoginController {
 	@RequestMapping(value = "/login", method=RequestMethod.GET)
 	public Map<String, Object> index() {
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("code", 200);
+		model.put("code", 0);
 		model.put("message", "Login!");
 		return model;
 	}
@@ -20,7 +20,7 @@ public class LoginController {
 	@RequestMapping(value = "/login", method=RequestMethod.POST)
 	public Map<String, Object> login() {
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("code", 200);
+		model.put("code", 0);
 		model.put("message", "Login!");
 		return model;
 	}
@@ -28,7 +28,7 @@ public class LoginController {
 	@RequestMapping(value = "/login_error", method=RequestMethod.GET)
 	public Map<String, Object> loginError() {
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("code", 200);
+		model.put("code", 0);
 		model.put("message", "Login!");
 		return model;
 	} 
@@ -36,7 +36,7 @@ public class LoginController {
 	@RequestMapping(value = "/logout", method=RequestMethod.POST)
 	public Map<String, Object> logout() {
 		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("code", 200);
+		model.put("code", 0);
 		model.put("message", "Logout!");
 		return model;
 	}
