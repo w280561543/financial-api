@@ -13,7 +13,7 @@ public class IndexController {
 	public Map<String, Object> index() throws Exception {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("code", 0);
-		model.put("message", "Successful!");
+		model.put("message", "successful!");
 		return model;
 	}
 }
