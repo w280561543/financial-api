@@ -32,7 +32,7 @@ public class LoginController {
 		model.put("message", "Login!");
 		return model;
 	} 
-	
+
 	@RequestMapping(value = "/logout", method=RequestMethod.POST)
 	public Map<String, Object> logout() {
 		Map<String, Object> model = new HashMap<String, Object>();
