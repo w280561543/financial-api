@@ -13,6 +13,7 @@ logging:
 # SPRING YAML
 # ----------------------------------------
 spring:
+    
     # DATA REST
     data:
         rest:
@@ -25,18 +26,28 @@ spring:
         url: jdbc:mysql://127.0.0.1:3306/financial?characterEncoding=utf8&useSSL=true
         username: root
 
+    # Email
+    mail:
+        default-encoding: UTF-8
+        host: smtp.qq.com
+        password: qwcdqwyhxmgpbice
+        port: 465
+        protocol: smtp
+        test-connection: false
+        username: 280561543@qq.com
+
+    # HTTP encoding
+    http:
+        encoding:
+            enabled: true
+            charset: UTF-8
+
     # JPA
     jpa:
         hibernate:
             #ddl-auto: create-drop
             ddl-auto: none
         show-sql: true
-
-    # HTTP encoding
-    http:
-        encoding:
-            charset: UTF-8
-            enabled: true
 
 # ----------------------------------------
 # WEB YAML
