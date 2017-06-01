@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RestController
 @RequestMapping(value = "/user")
 public class UserController {
-	
 	@RequestMapping(value = "", method=RequestMethod.GET)
 	public Map<String, Object> index() {
 		Map<String, Object> model = new HashMap<String, Object>();

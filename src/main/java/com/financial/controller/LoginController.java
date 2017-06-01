@@ -9,15 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
 public class LoginController {
-	@RequestMapping(value = "/login", method=RequestMethod.GET)
-	public Map<String, Object> index() {
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("code", 0);
-		model.put("message", "Login!");
-		return model;
-	}
-
-	@RequestMapping(value = "/login", method=RequestMethod.POST)
+	@RequestMapping(value = "/user/login", method=RequestMethod.POST)
 	public Map<String, Object> login() {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("code", 0);
@@ -25,19 +17,11 @@ public class LoginController {
 		return model;
 	}
 
-	@RequestMapping(value = "/login_error", method=RequestMethod.GET)
-	public Map<String, Object> loginError() {
+	@RequestMapping(value = "/user/register", method=RequestMethod.POST)
+	public Map<String, Object> register() {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("code", 0);
-		model.put("message", "Login!");
-		return model;
-	} 
-
-	@RequestMapping(value = "/logout", method=RequestMethod.POST)
-	public Map<String, Object> logout() {
-		Map<String, Object> model = new HashMap<String, Object>();
-		model.put("code", 0);
-		model.put("message", "Logout!");
+		model.put("message", "Register!");
 		return model;
 	}
 }
