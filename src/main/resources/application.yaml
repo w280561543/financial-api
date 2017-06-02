@@ -28,23 +28,6 @@ spring:
         #url: jdbc:mysql://127.0.0.1:3306/financial?characterEncoding=utf8&useSSL=true
         #username: root
 
-    # Email
-    mail:
-        default-encoding: UTF-8
-        host: smtp.qq.com
-        password: qwcdqwyhxmgpbice
-        port: 465
-        protocol: smtp
-        test-connection: false
-        username: 280561543@qq.com
-        properties:
-            mail:
-                smtp:
-                    connecttimeout: 5000
-                    debug: true
-                    timeout: 3000
-                    writetimeout: 5000
-
     # HTTP encoding
     http:
         encoding:
@@ -54,9 +37,9 @@ spring:
     # JPA
     jpa:
         hibernate:
-            ddl-auto: create-drop
+            #ddl-auto: create-drop
             #ddl-auto: update
-            #ddl-auto: none
+            ddl-auto: none
         database-platform: com.financial.SQLiteDialect
         show-sql: true
 
