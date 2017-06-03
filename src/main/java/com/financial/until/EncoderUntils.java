@@ -16,11 +16,6 @@ public class EncoderUntils {
 	private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(8);
 
 	/**
-	 * 定义一个私有构造方法
-	 */
-	private EncoderUntils() {}
-
-	/**
 	 * 加密密码
 	 * @param rawPassword
 	 * @return String 返回加密后的密码
