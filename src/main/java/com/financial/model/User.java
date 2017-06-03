@@ -19,7 +19,7 @@ import com.financial.until.EncoderUntils;
 public class User {
 
 	@Id
-	@Column(name = "user_id")
+	@Column(name = "user_id", nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
@@ -36,6 +36,7 @@ public class User {
 	@Column(nullable = false)
 	private boolean isEnabled;// Indicates whether the user is enabled or disabled.
 
+	@Column(nullable = false)
 	private String[] roles;
 
 	protected User() {}
