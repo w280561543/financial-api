@@ -31,6 +31,9 @@ public class User {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createTime;
 
+	@Column(nullable = false)
+	private boolean isEnabled;// Indicates whether the user is enabled or disabled.
+
 	protected User() {}
 
 	public User(String email, String password) {
