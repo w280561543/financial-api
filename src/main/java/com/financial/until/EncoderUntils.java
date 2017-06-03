@@ -2,6 +2,7 @@ package com.financial.until;
 
 import java.lang.CharSequence;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
@@ -13,7 +14,11 @@ public class EncoderUntils {
 	/**
 	 * 定义一个BCryptPasswordEncoder的静态私有变量
 	 */
-	private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(8);
+	private static final PasswordEncoder encoder = new BCryptPasswordEncoder(8);
+
+	public static PasswordEncoder getEncoder() {
+		return encoder;
+	}
 
 	/**
 	 * 加密密码
