@@ -3,12 +3,18 @@ package com.financial;
 import java.sql.Types;
 
 import org.hibernate.dialect.Dialect;
-import org.hibernate.dialect.function.StandardSQLFunction;
+import org.hibernate.dialect.function.SQLFunction;
 import org.hibernate.dialect.function.SQLFunctionTemplate;
+import org.hibernate.dialect.function.NoArgSQLFunction;
+import org.hibernate.dialect.function.StandardSQLFunction;
 import org.hibernate.dialect.function.VarArgsSQLFunction;
-import org.hibernate.Hibernate;
-import org.hibernate.type.StringType;
+import org.hibernate.dialect.function.AbstractAnsiTrimEmulationFunction;
+import org.hibernate.type.StandardBasicTypes;
 
+/**
+ * An SQL dialect for SQLite 3.
+ * @Web https://github.com/gwenn/sqlite-dialect
+ */
 public class SQLiteDialect extends Dialect {
 	public SQLiteDialect() {
 		registerColumnType(Types.BIT, "integer");
@@ -33,12 +39,43 @@ public class SQLiteDialect extends Dialect {
 		// registerColumnType(Types.NULL, "null");
 		registerColumnType(Types.BLOB, "blob");
 		registerColumnType(Types.CLOB, "clob");
-		registerColumnType(Types.BOOLEAN, "integer");
+		registerColumnType(Types.BOOLEAN, "tinyint");
 
-		registerFunction( "concat", new VarArgsSQLFunction(StringType.INSTANCE, "", "||", "") );
-        registerFunction( "mod", new SQLFunctionTemplate( StringType.INSTANCE, "?1 % ?2" ) );
-        registerFunction( "substr", new StandardSQLFunction("substr", StringType.INSTANCE) );
-        registerFunction( "substring", new StandardSQLFunction( "substr", StringType.INSTANCE) );
+		registerFunction("concat", new VarArgsSQLFunction(StandardBasicTypes.STRING, "", "||", ""));
+		registerFunction("mod", new SQLFunctionTemplate(StandardBasicTypes.INTEGER, "?1 % ?2"));
+		registerFunction("quote", new StandardSQLFunction("quote", StandardBasicTypes.STRING));
+		registerFunction("random", new NoArgSQLFunction("random", StandardBasicTypes.INTEGER));
+		registerFunction("round", new StandardSQLFunction("round" ));
+		registerFunction("substr", new StandardSQLFunction("substr", StandardBasicTypes.STRING));
+		registerFunction("trim", new AbstractAnsiTrimEmulationFunction() {
+			protected SQLFunction resolveBothSpaceTrimFunction() {
+				return new SQLFunctionTemplate(StandardBasicTypes.STRING, "trim(?1)");
+			}
+
+			protected SQLFunction resolveBothSpaceTrimFromFunction() {
+				return new SQLFunctionTemplate(StandardBasicTypes.STRING, "trim(?2)");
+			}
+
+			protected SQLFunction resolveLeadingSpaceTrimFunction() {
+				return new SQLFunctionTemplate(StandardBasicTypes.STRING, "ltrim(?1)");
+			}
+
+			protected SQLFunction resolveTrailingSpaceTrimFunction() {
+				return new SQLFunctionTemplate(StandardBasicTypes.STRING, "rtrim(?1)");
+			}
+
+			protected SQLFunction resolveBothTrimFunction() {
+				return new SQLFunctionTemplate(StandardBasicTypes.STRING, "trim(?1, ?2)");
+			}
+
+			protected SQLFunction resolveLeadingTrimFunction() {
+				return new SQLFunctionTemplate(StandardBasicTypes.STRING, "ltrim(?1, ?2)");
+			}
+
+			protected SQLFunction resolveTrailingTrimFunction() {
+				return new SQLFunctionTemplate(StandardBasicTypes.STRING, "rtrim(?1, ?2)");
+			}
+		});
     }
 
 	public boolean supportsIdentityColumns() {
@@ -57,7 +94,7 @@ public class SQLiteDialect extends Dialect {
 
 	/*
 	public String appendIdentitySelectToInsert(String insertString) {
-	return new StringBuffer(insertString.length()+30). // As specify in NHibernate dialect
+		return new StringBuffer(insertString.length()+30). // As specify in NHibernate dialect
 		append(insertString).
 		append("; ").append(getIdentitySelectString()).toString();
 	}
