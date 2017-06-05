@@ -15,9 +15,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
-import com.financial.service.UserService;
-import com.financial.until.EncoderUntils;
-
 /**
  * Security Config
  */
@@ -37,11 +34,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	}
 
 	@Autowired
-	private UserService userService;
+	private com.financial.service.FinUserDetailsService FinUserDetailsService;
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(this.userService).passwordEncoder(EncoderUntils.getEncoder());
+		auth.userDetailsService(this.FinUserDetailsService).passwordEncoder(com.financial.until.EncoderUntils.getEncoder());
 	}
 	/*
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
