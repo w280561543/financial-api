@@ -26,3 +26,6 @@ hs_err_pid*
 
 # HBuilder #
 .project
+
+# NetBeans #
+/.nb-gradle/
