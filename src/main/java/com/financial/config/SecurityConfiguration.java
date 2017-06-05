@@ -18,6 +18,9 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import com.financial.service.UserService;
 import com.financial.until.EncoderUntils;
 
+/**
+ * Security Config
+ */
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
