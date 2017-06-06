@@ -43,6 +43,12 @@ spring:
         database-platform: com.financial.SQLiteDialect
         show-sql: true
 
+    # DEVTOOLS
+    devtools:
+        restart:
+            additional-paths: [src/main/java/com/financial/]
+            enabled: true
+
 # ----------------------------------------
 # WEB YAML
 # ----------------------------------------
