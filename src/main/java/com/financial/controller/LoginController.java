@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import com.financial.model.User;
 /**
  * 登陆控制器类
  * @author Maing<280561543@qq.com>
@@ -20,11 +20,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LoginController {
     @Autowired
     private com.financial.service.FinUserDetailsService finUserDetailsService;
-
-	//@RequestMapping(value = "/login", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @RequestMapping(value = "/login", method=RequestMethod.GET, produces = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    
+    //@RequestMapping(value = "/login", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value = "/login", method=RequestMethod.POST)
 	//public Map<String, Object> login(@RequestBody Map<String, Object> userInfo) {
-    public @ResponseBody Map<String, Object> login(@RequestParam(value = "email") String email, @RequestParam(value = "password") String password) {
+    //public @ResponseBody Map<String, Object> login(@RequestParam(value = "email") String email, @RequestParam(value = "password") String password) {
+    //public Map<String, Object> login(@RequestBody(required = false) User user) {
+    public Map<String, Object> login(@RequestBody(required = false) User user) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("code", 1);
         model.put("status", 200);
