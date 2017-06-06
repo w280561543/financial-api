@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-//import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -24,10 +24,11 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable();
+		//http.csrf().disable();
+        http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
 		http
 			.authorizeRequests()
-			.antMatchers("/", "/login", "/register").permitAll()
+			.antMatchers("/","/csrf" , "/login", "/register").permitAll()
 			.antMatchers("/user/**", "/api/**").hasRole("USER").and()
 			.cors();
 			//.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
