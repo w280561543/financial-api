@@ -4,10 +4,8 @@
 logging:
     level:
 # DEBUG < INFO < WARN < ERROR < FATAL
-        #root: WARN
-        root: FATAL
-        #org.springframework.security: INFO
-        org.springframework.security: FATAL
+        root: WARN
+        org.springframework.security: DEBUG
 
 # ----------------------------------------
 # SPRING YAML
