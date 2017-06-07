@@ -31,7 +31,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatchers("/","/csrf" , "/login", "/register").permitAll()
 			.antMatchers("/user/**", "/api/**").hasRole("USER").and()
 			.cors();
-			//.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
 	}
 
 	@Autowired
