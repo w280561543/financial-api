@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+//import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -21,13 +21,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
         http.cors().and()
-            .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
-            //.csrf().disable();
+            //.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+            .csrf().disable();
 
 		http.httpBasic().and()
+            .logout().and()
 			.authorizeRequests()
-			.antMatchers("/","/csrf" , "/login", "/register").permitAll()
-			.antMatchers("/user/**", "/api/**").hasRole("USER");
+			.antMatchers("/","/csrf" , "/login", "/register", "/untils/**").permitAll()
+            .anyRequest().authenticated();
 	}
 
 	@Autowired
@@ -37,12 +38,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(this.FinUserDetailsService).passwordEncoder(com.financial.until.EncoderUntils.getEncoder());
 	}
-	/*
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication()
-			.withUser("user").password("password").roles("USER");
-	}
-	*/
 
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
