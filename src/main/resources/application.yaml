@@ -11,7 +11,9 @@ logging:
 # SPRING YAML
 # ----------------------------------------
 spring:
-    
+    # SPRING SESSION
+    session:
+        store-type: none
     # DATA REST
     data:
         rest:
