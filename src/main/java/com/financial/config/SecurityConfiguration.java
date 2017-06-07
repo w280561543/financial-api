@@ -25,12 +25,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		//http.csrf().disable();
-        http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+        http.cors().and()
+            .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+
 		http
 			.authorizeRequests()
 			.antMatchers("/","/csrf" , "/login", "/register").permitAll()
-			.antMatchers("/user/**", "/api/**").hasRole("USER").and()
-			.cors();
+			.antMatchers("/user/**", "/api/**").hasRole("USER");
 	}
 
 	@Autowired
@@ -46,7 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.withUser("user").password("password").roles("USER");
 	}
 	*/
-	
+
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
