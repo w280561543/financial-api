@@ -57,7 +57,7 @@ public class User {
 		return password;
 	}
 
-	public void setPassword(String password) {
+	private void setPassword(String password) {
 		this.password = EncoderUntils.encode(password);
 	}
 
@@ -69,7 +69,7 @@ public class User {
 		return isEnabled;
 	}
 
-	public void setIsEnabled(boolean isEnabled) {
+	private void setIsEnabled(boolean isEnabled) {
 		this.isEnabled = isEnabled;
 	}
 
