@@ -5,7 +5,9 @@ logging:
     level:
 # DEBUG < INFO < WARN < ERROR < FATAL
         root: WARN
-        org.springframework.security: DEBUG
+        org.springframework:
+            security: DEBUG
+            session: TRACE
 
 # ----------------------------------------
 # SPRING YAML
