@@ -20,7 +20,6 @@ public class LoginController {
     public @ResponseBody Map<String, Object> login(@RequestBody Map<String, Object> userInfo) {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("code", 1);
-        model.put("status", 200);
 		model.put("message", "Login!");
         model.put("data", userInfo);
 		return model;
